@@ -27,7 +27,7 @@
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-gruvbox)
 
-(setq doom-font (font-spec :family "mononoki" :size 16)
+(setq doom-font (font-spec :family "mononoki Nerd Font Mono" :size 16)
       doom-variable-pitch-font (font-spec :family "Ubuntu")) ; inherits `doom-font''s :size
 (after! doom-themes
   (setq doom-themes-enable-bold t

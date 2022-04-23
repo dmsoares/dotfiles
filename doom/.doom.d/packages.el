@@ -48,13 +48,3 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
-
-;; Packages below
-;;(package! org-super-agenda)
-
-;; Disable evil-snipe
-(package! evil-snipe :disable t)
-
-;; Org Roam UI
-(package! websocket)
-(package! org-roam-ui :recipe (:host github :repo "org-roam/org-roam-ui" :files ("*.el" "out")))

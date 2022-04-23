@@ -5,46 +5,62 @@
 
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets.
+;; clients, file templates and snippets. It is optional.
 (setq user-full-name "Decio Soares"
       user-mail-address "decio.msoares@gmail.com")
 
-;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
-;; are the three important ones:
+;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
-;; + `doom-font'
-;; + `doom-variable-pitch-font'
-;; + `doom-big-font' -- used for `doom-big-font-mode'; use this for
+;; - `doom-font' -- the primary font to use
+;; - `doom-variable-pitch-font' -- a non-monospace font (where applicable)
+;; - `doom-big-font' -- used for `doom-big-font-mode'; use this for
 ;;   presentations or streaming.
+;; - `doom-unicode-font' -- for unicode glyphs
+;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
 ;;
-;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
-;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
-;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
+;; See 'C-h v doom-font' for documentation and more examples of what they
+;; accept. For example:
+;;
+(setq doom-font (font-spec :family "MesloLGS NF" :size 14)
+      doom-variable-pitch-font (font-spec :family "Ubuntu"))
+(after! doom-themes
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t))
+;;
+;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
+;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
+;; refresh your font settings. If Emacs still can't find your font, it likely
+;; wasn't installed correctly. Font issues are rarely Doom issues!
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-gruvbox)
-
-(setq doom-font (font-spec :family "mononoki" :size 16)
-      doom-variable-pitch-font (font-spec :family "Ubuntu")) ; inherits `doom-font''s :size
-(after! doom-themes
-  (setq doom-themes-enable-bold t
-        doom-themes-enable-italic t))
-
-
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Documents/Org/")
-(setq org-agenda-files (directory-files-recursively "~/Documents/Org/" "\.org$"))
+;;(setq doom-theme 'doom-one)
+(setq doom-theme 'my-horizon)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
 
+;; If you use `org' and don't want your org files in the default location below,
+;; change `org-directory'. It must be set before org loads!
+(setq org-directory "~/org/")
 
-;; Here are some additional functions/macros that could help you configure Doom:
+
+;; Whenever you reconfigure a package, make sure to wrap your config in an
+;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
+;;
+;;   (after! PACKAGE
+;;     (setq x y))
+;;
+;; The exceptions to this rule:
+;;
+;;   - Setting file/directory variables (like `org-directory')
+;;   - Setting variables which explicitly tell you to set them before their
+;;     package is loaded (see 'C-h v VARIABLE' to look up their documentation).
+;;   - Setting doom variables (which start with 'doom-' or '+').
+;;
+;; Here are some additional functions/macros that will help you configure Doom.
 ;;
 ;; - `load!' for loading external *.el files relative to this one
 ;; - `use-package!' for configuring packages
@@ -57,33 +73,22 @@
 ;; To get information about any of these functions/macros, move the cursor over
 ;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
 ;; This will open documentation for it, including demos of how they are used.
+;; Alternatively, use `C-h o' to look up a symbol (functions, variables, faces,
+;; etc).
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-
 ;; Disable evil-snipe
 (after! evil-snipe
-  (evil-snipe-mode -1))
+   (evil-snipe-mode -1))
 
 ;; Window splits config
-;; Change focus to new window
+;; change focus to new window
 (setq evil-vsplit-window-right t
       evil-split-window-below t)
 
-;; Org Roam
-(setq org-roam-directory "~/Documents/Roam")
-
-(use-package! websocket
-  :after org-roam)
-
-(use-package! org-roam-ui
-  :after org-roam
-  :hook (org-roam . org-roam-ui-mode)
-  :config
-)
-
-;; Lsp
+;; LSP
 ;; Mappings
 (map!
  :after company
@@ -92,15 +97,22 @@
  "<return>" nil
  [tab] #'company-complete-selection
  "TAB" #'company-complete-selection)
-;; Haskell
-(after!
-  (setq lsp-haskell-formatting-provider "stylish-haskell"))
-(setq haskell-stylish-on-save t)
-
 ;; Settings
-(setq lsp-ui-doc-enable nil)
+;; Disable lsp-ui-doc
+;;(setq lsp-ui-doc-enable nil)
+;; Fix format on save (disabling the LSP formatter)
+;;(setq +format-with-lsp nil)
+(setq-hook! 'rjsx-mode-hook +format-with-lsp nil)
 
 ;; Emacsclient workspaces
-;; use main workspace when starting new emacsclient
+;; use main workspace when starting new emacsrlient
 (after! persp-mode
   (setq persp-emacsclient-init-frame-behaviour-override "main"))
+
+;; Haskell
+;; Set formatter
+;;(after!
+;;  (setq lsp-haskell-formatting-provider "ormolu"))
+
+;; Move TSServer log files to /tmp/
+(setenv "TSSERVER_LOG_FILE" "/tmp/tsserver.log")

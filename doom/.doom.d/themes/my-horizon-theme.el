@@ -150,8 +150,8 @@
    ;;;; elscreen
    (elscreen-tab-other-screen-face :background "#353a42" :foreground "#1e2022")
    ;;;; evil
-   (evil-ex-search          :background hor-highlight-selected :foreground fg)
-   (evil-ex-lazy-highlight  :background hor-highlight :foreground fg)
+   (evil-ex-search          :background hor-highlight-selected :foreground green)
+   (evil-ex-lazy-highlight  :background hor-highlight :foreground green)
    ;;;; haskell-mode
    (haskell-type-face :foreground violet)
    (haskell-constructor-face :foreground yellow)

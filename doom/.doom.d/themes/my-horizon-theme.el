@@ -19,12 +19,12 @@
   :group 'doom-horizon-theme
   :type 'boolean)
 
-(defcustom doom-horizon-brighter-comments nil
+(defcustom doom-horizon-brighter-comments t
   "If non-nil, comments will be highlighted in more vivid colors."
   :group 'doom-horizon-theme
   :type 'boolean)
 
-(defcustom doom-horizon-comment-bg doom-horizon-brighter-comments
+(defcustom doom-horizon-comment-bg nil
   "If non-nil, comments will have a subtle, darker background. Enhancing their legibility."
   :group 'doom-horizon-theme
   :type 'boolean)

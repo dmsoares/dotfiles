@@ -88,7 +88,7 @@
    (strings        yellow)
    (variables      red)
    (numbers        orange)
-   (region         hor-highlight)
+   (region         hor-highlight-selected)
    (error          red)
    (warning        dark-cyan)
    (success        green)

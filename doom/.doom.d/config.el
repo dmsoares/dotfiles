@@ -22,7 +22,7 @@
 ;; accept. For example:
 ;;
 (setq doom-font (font-spec :family "MesloLGS NF" :size 14)
-      doom-variable-pitch-font (font-spec :family "Ubuntu"))
+      doom-variable-pitch-font (font-spec :family "MesloLGS NF"))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -36,6 +36,8 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;;(setq doom-theme 'doom-one)
+;;(setq doom-theme 'doom-nord)
+;;(setq doom-theme 'doom-gruvbox)
 (setq doom-theme 'my-horizon)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -78,10 +80,6 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-
-;; Disable evil-snipe
-(after! evil-snipe
-   (evil-snipe-mode -1))
 
 ;; Window splits config
 ;; change focus to new window

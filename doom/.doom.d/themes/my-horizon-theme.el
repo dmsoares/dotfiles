@@ -78,7 +78,7 @@
    (selection      violet)
    (builtin        violet)
    (comments       (if doom-horizon-brighter-comments magenta hor-highlight-bright))
-   (doc-comments   yellow)
+   (doc-comments   (if doom-horizon-brighter-comments magenta hor-highlight-bright))
    (constants      orange)
    (functions      teal)
    (keywords       violet)

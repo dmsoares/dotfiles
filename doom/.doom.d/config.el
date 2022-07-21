@@ -95,6 +95,7 @@
  "<return>" nil
  [tab] #'company-complete-selection
  "TAB" #'company-complete-selection)
+
 ;; Settings
 ;; Disable lsp-ui-doc
 ;;(setq lsp-ui-doc-enable nil)
@@ -109,8 +110,8 @@
 
 ;; Haskell
 ;; Set formatter
-;;(after!
-;;  (setq lsp-haskell-formatting-provider "ormolu"))
+;; (after!
+;;   (setq lsp-haskell-formatting-provider '("brittany")))
 
 ;; Move TSServer log files to /tmp/
 (setenv "TSSERVER_LOG_FILE" "/tmp/tsserver.log")

@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode zsh-autosuggestions)
+plugins=(git vi-mode zsh-autosuggestions fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -101,13 +101,15 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # PATH
-export PATH=$HOME/.local/bin:$HOME/.emacs.d/bin:$HOME/.cabal/bin:$HOME/.gchcup/bin:$PATH
+export PATH=$HOME/.emacs.d/bin:$PATH
 
 # NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-[ -f "/home/decio/.ghcup/env" ] && source "/home/decio/.ghcup/env" # ghcup-env
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Emacs alias
 alias emacs="emacsclient -c -a 'emacs' &"
+
+# GHCup
+[ -f "/home/decio/.ghcup/env" ] && source "/home/decio/.ghcup/env" # ghcup-env

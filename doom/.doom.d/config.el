@@ -99,19 +99,19 @@
 ;; Settings
 ;; Disable lsp-ui-doc
 ;;(setq lsp-ui-doc-enable nil)
-;; Fix format on save (disabling the LSP formatter)
+
+;; Fix format on save (disabling the LSP formatter for rjsx-mode: eslint and tsserver can collide)
 ;;(setq +format-with-lsp nil)
 (setq-hook! 'rjsx-mode-hook +format-with-lsp nil)
 
 ;; Emacsclient workspaces
-;; use main workspace when starting new emacsrlient
+;; use main workspace when starting new emacsclient
 (after! persp-mode
   (setq persp-emacsclient-init-frame-behaviour-override "main"))
 
 ;; Haskell
 ;; Set formatter
-;; (after!
-;;   (setq lsp-haskell-formatting-provider '("brittany")))
+(setq lsp-haskell-formatting-provider "stylish-haskell")
 
 ;; Move TSServer log files to /tmp/
 (setenv "TSSERVER_LOG_FILE" "/tmp/tsserver.log")

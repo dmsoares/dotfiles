@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode zsh-autosuggestions fzf)
+plugins=(git vi-mode zsh-autosuggestions fzf z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -85,8 +85,8 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='nvim'
 else
-  export EDITOR="emacsclient -t -a ''"
-  export VISUAL="emacsclient -c -a emacs"
+  export EDITOR='nvim'
+  export VISUAL='emacsclient -c -a emacs'
 fi
 
 # Compilation flags

@@ -1,0 +1,10 @@
+[Unit]
+Description=XScreenSaver
+
+[Service]
+Type=simple
+ExecStart=xscreensaver -nosplash
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Picom
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/picom
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

@@ -86,8 +86,11 @@
 (setq evil-vsplit-window-right t
       evil-split-window-below t)
 
-;; LSP
 ;; Mappings
+;; Evil
+(map! "C-j" #'evil-scroll-line-down)
+(map! "C-k" #'evil-scroll-line-up)
+;; LSP
 (map!
  :after company
  :map company-active-map

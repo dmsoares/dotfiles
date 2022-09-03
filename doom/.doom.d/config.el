@@ -21,8 +21,10 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "MesloLGS NF" :size 14)
-      doom-variable-pitch-font (font-spec :family "MesloLGS NF"))
+;; (setq doom-font (font-spec :family "MesloLGS NF" :size 14)
+;;       doom-variable-pitch-font (font-spec :family "MesloLGS NF"))
+(setq doom-font (font-spec :family "Hasklug Nerd Font Mono" :size 15)
+      doom-variable-pitch-font (font-spec :family "Hasklug Nerd Font Mono"))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))

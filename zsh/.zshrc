@@ -101,9 +101,6 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# PATH
-export PATH=$HOME/.emacs.d/bin:$PATH
-
 # NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
@@ -113,6 +110,13 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 alias vim="nvim"
 alias em="/usr/local/bin/emacs -nw"
 alias emacs="emacsclient -c -a 'emacs' &"
+export EMACS_INSTALL=$HOME/.emacs.d
 
 # GHCup
 [ -f "/home/decio/.ghcup/env" ] && source "/home/decio/.ghcup/env" # ghcup-env
+
+# Deno
+export DENO_INSTALL=$HOME/.deno
+
+# PATH
+export PATH=$EMACS_INSTALL/bin:$DENO_INSTALL/bin:$PATH

@@ -120,3 +120,14 @@
 
 ;; Move TSServer log files to /tmp/
 (setenv "TSSERVER_LOG_FILE" "/tmp/tsserver.log")
+
+
+;; Macros
+
+(fset 'js-debug
+   (kmacro-lambda-form [?i ?c ?o ?n ?s ?o ?l ?e ?. ?l ?o ?g ?\( ?\' ?# ?# ?  ?D ?E ?B ?U ?G ?\S-  ?# ?# ?\' ?, ?  escape] 0 "%d"))
+
+(map! :leader
+      (:prefix-map ("c" . "code")
+       (:prefix-map ("m" . "Macros")
+       :desc "JS-Debug" "d" #'js-debug)))

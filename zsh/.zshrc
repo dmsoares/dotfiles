@@ -116,7 +116,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 # vim and emacs
 alias vim="nvim"
-alias em="/usr/local/bin/emacs -nw"
+alias em="/usr/bin/emacs -nw"
 alias emacs="emacsclient -c -a 'emacs' &"
 export EMACS_INSTALL=$HOME/.emacs.d
 

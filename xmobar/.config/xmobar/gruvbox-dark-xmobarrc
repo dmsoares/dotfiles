@@ -36,25 +36,25 @@ Config { font            = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:h
                         -- Get kernel version (script found in .local/bin)
                     , Run Com ".local/bin/kernel" [] "kernel" 36000
                         -- Cpu usage in percent
-                    , Run Cpu ["-t", "<fn=2>\xf108</fn>  cpu: (<total>%)","-H","50","--high","red"] 20
+                    , Run Cpu ["-t", "<fn=2>\xf108</fn>  (<total>%)","-H","50","--high","red"] 20
                         -- Ram used number and percent
-                    , Run Memory ["-t", "<fn=2>\xf233</fn>  mem: <used>M (<usedratio>%)"] 20
+                    , Run Memory ["-t", "<fn=2>\xf233</fn>  <used>M (<usedratio>%)"] 20
                         -- Disk space free
-                    , Run DiskU [("/", "<fn=2>\xf0c7</fn>  hdd: <free> free")] [] 60
+                    , Run DiskU [("/", "<fn=2>\xf0c7</fn>  <free>")] [] 60
                         -- Echos an "up arrow" icon in front of the uptime output.
                     , Run Com "echo" ["<fn=2>\xf0aa</fn>"] "uparrow" 3600
                         -- Uptime
-                    , Run Uptime ["-t", "uptime: <days>d <hours>h"] 360
+                    , Run Uptime ["-t", "<days>d <hours>h"] 360
                         -- Echos a "bell" icon in front of the pacman updates.
-                    , Run Com "echo" ["<fn=2>\xf0f3</fn>"] "bell" 3600
+                    , Run Com "echo" ["<fn=2>\xf2f1</fn>"] "sync" 3600
                         -- Check for pacman updates (script found in .local/bin)
-                    , Run Com ".local/bin/pacupdate" [] "pacupdate" 36000
+                    , Run Com ".local/bin/pamacupdate" [] "pacupdate" 36000
                         -- Echos a "battery" icon in front of the pacman updates.
                     , Run Com "echo" ["<fn=2>\xf242</fn>"] "baticon" 3600
                         -- Battery
                     , Run BatteryP ["BAT0"] ["-t", "<acstatus><watts> (<left>%)"] 360
                         -- Time and date
-                    , Run Date "<fn=2>\xf017</fn>  %b %d %Y - (%H:%M) " "date" 50
+                    , Run Date "%b %d %Y - %H:%M " "date" 50
                         -- Script that dynamically adjusts xmobar padding depending on number of trayer icons.
                     , Run Com ".config/xmobar/trayer-padding-icon.sh" [] "trayerpad" 20
                         -- Prints out the left side items such as workspaces, layout, etc.
@@ -62,5 +62,5 @@ Config { font            = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:h
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " <fc=#b16286>λ</fc> %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=2 color=#d3869b><fc=#d3869b>%penguin%  %kernel%</fc></box>    <box type=Bottom width=2 mb=2 color=#b8bb26><fc=#b8bb26><action=`alacritty -e htop`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#458588><fc=#458588><action=`alacritty -e htop`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#d79921><fc=#d79921>%disku%</fc></box>    <box type=Bottom width=2 mb=2 color=#b16286><fc=#b16286>%uparrow%  %uptime%</fc></box>    <box type=Bottom width=2 mb=2 color=#689d6a><fc=#689d6a>%bell%  <action=`alacritty -e sudo pacman -Syu`>%pacupdate%</action></fc></box>   <box type=Bottom width=2 mb=2 color=#fb4934><fc=#fb4934>%baticon%  %battery%</fc></box>    <box type=Bottom width=2 mb=2 color=#83a598><fc=#83a598><action=`emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(calendar))'`>%date%</action></fc></box> %trayerpad%"
+       , template = " <fc=#b16286>λ</fc> %UnsafeStdinReader% }<fc=#83a598><action=`emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(calendar))'`>%date%</action></fc>{ <fc=#b8bb26><action=`alacritty -e htop`>%cpu%</action></fc>    <fc=#458588><action=`alacritty -e htop`>%memory%</action></fc>    <fc=#d79921>%disku%</fc>    <fc=#b16286>%uparrow%  %uptime%</fc>    <fc=#689d6a><action=`alacritty -e pamac update -a`>%sync%  %pacupdate%</action></fc>   <fc=#fb4934>%baticon%  %battery%</fc>     %trayerpad%"
        }

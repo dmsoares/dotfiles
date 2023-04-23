@@ -109,6 +109,9 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Browser
+BROWSER=/usr/bin/brave
+
 # NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
@@ -131,3 +134,5 @@ export PATH=$EMACS_INSTALL/bin:$DENO_INSTALL/bin:$PATH
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+if [ -e /home/decio/.nix-profile/etc/profile.d/nix.sh ]; then . /home/decio/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

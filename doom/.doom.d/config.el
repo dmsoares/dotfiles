@@ -98,8 +98,8 @@
  :map company-active-map
  "RET" nil
  "<return>" nil
- [tab] #'company-complete-selection
- "TAB" #'company-complete-selection)
+ ;; [tab] #'company-complete-selection
+ "C-<return>" #'company-complete-selection)
 
 ;; Settings
 ;; Disable lsp-ui-doc
@@ -116,7 +116,7 @@
 
 ;; Haskell
 ;; Set formatter
-(setq lsp-haskell-formatting-provider "stylish-haskell")
+(setq lsp-haskell-formatting-provider "ormolu")
 
 ;; Move TSServer log files to /tmp/
 (setenv "TSSERVER_LOG_FILE" "/tmp/tsserver.log")

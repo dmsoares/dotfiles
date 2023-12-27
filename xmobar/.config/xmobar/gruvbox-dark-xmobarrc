@@ -62,5 +62,5 @@ Config { font            = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:h
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " <fc=#b16286>λ</fc> %UnsafeStdinReader% }<fc=#83a598><action=`emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(calendar))'`>%date%</action></fc>{ <fc=#b8bb26><action=`alacritty -e htop`>%cpu%</action></fc>    <fc=#458588><action=`alacritty -e htop`>%memory%</action></fc>    <fc=#d79921>%disku%</fc>    <fc=#b16286>%uparrow%  %uptime%</fc>    <fc=#689d6a><action=`alacritty -e pamac update -a`>%sync%  %pacupdate%</action></fc>   <fc=#fb4934>%baticon%  %battery%</fc>     %trayerpad%"
+       , template = " <fc=#b16286>λ</fc> %UnsafeStdinReader% }<fc=#83a598><action=`emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(calendar))'`>%date%</action></fc>{ <fc=#b8bb26><action=`alacritty -e htop`>%cpu%</action></fc>    <fc=#458588><action=`alacritty -e htop`>%memory%</action></fc>    <fc=#d79921>%disku%</fc>    <fc=#b16286>%uparrow%  %uptime%</fc>    <fc=#fb4934>%baticon%  %battery%</fc>     %trayerpad%"
        }
